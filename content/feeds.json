@@ -1,0 +1,9 @@
+[
+  { "name": "Google Notícias — Oncologia", "url": "https://news.google.com/rss/search?q=oncologia&hl=pt-BR&gl=BR&ceid=BR:pt-419", "lang": "pt", "enabled": true },
+  { "name": "Google Notícias — Câncer: pesquisa e tratamento", "url": "https://news.google.com/rss/search?q=c%C3%A2ncer+(estudo+OR+tratamento+OR+pesquisa)&hl=pt-BR&gl=BR&ceid=BR:pt-419", "lang": "pt", "enabled": true },
+  { "name": "Agência Brasil — Saúde", "url": "https://agenciabrasil.ebc.com.br/rss/saude/feed.xml", "lang": "pt", "keywords": "câncer, cancer, oncolog, tumor, quimioterapia, inca", "enabled": true },
+  { "name": "ScienceDaily — Cancer", "url": "https://www.sciencedaily.com/rss/health_medicine/cancer.xml", "lang": "en", "enabled": true },
+  { "name": "Medical Xpress — Cancer", "url": "https://medicalxpress.com/rss-feed/cancer-news/", "lang": "en", "enabled": true },
+  { "name": "Nature — Cancer", "url": "https://www.nature.com/subjects/cancer.rss", "lang": "en", "enabled": true },
+  { "name": "News-Medical — Cancer", "url": "https://www.news-medical.net/tag/feed/Cancer.aspx", "lang": "en", "enabled": true }
+]

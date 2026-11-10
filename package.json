@@ -1,0 +1,15 @@
+{
+  "name": "netopereira-site",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Site do Dr. Neto Pereira — Oncologia (site estático + painel do blog)",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "dev": "node scripts/dev.mjs"
+  },
+  "engines": { "node": ">=20" },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^1.6.0"
+  }
+}

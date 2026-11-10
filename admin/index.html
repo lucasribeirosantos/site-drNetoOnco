@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Estúdio do Blog — Dr. Neto Pereira</title>
+<link rel="icon" type="image/png" href="/assets/img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/admin/admin.css">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="lg" x1="0" x2="1"><stop offset="0" stop-color="#b98ac2"/><stop offset=".5" stop-color="#00aeef"/><stop offset="1" stop-color="#a8dcc0"/></linearGradient></defs></svg>
+
+<!-- LOGIN -->
+<section class="login" id="login">
+  <form class="login__card" id="loginForm">
+    <svg class="login__mark" viewBox="0 0 610 395" aria-hidden="true">
+      <g fill="url(#lg)"><rect x="215" y="0" width="180" height="58" rx="29"/><rect x="425" y="0" width="180" height="58" rx="29"/><rect x="215" y="111" width="180" height="58" rx="29"/><rect x="425" y="111" width="115" height="58" rx="29"/><rect x="70" y="222" width="115" height="58" rx="29"/><rect x="215" y="222" width="180" height="58" rx="29"/><rect x="5" y="333" width="180" height="58" rx="29"/><rect x="215" y="333" width="180" height="58" rx="29"/></g>
+    </svg>
+    <h1>Estúdio do <em>Blog</em></h1>
+    <p>Vencendo o Câncer · Dr. Neto Pereira</p>
+    <label class="field"><span>Senha de acesso</span><input type="password" name="password" autocomplete="current-password" required autofocus></label>
+    <button class="btn btn--primary" type="submit">Entrar</button>
+    <p class="login__err" id="loginErr" role="alert"></p>
+  </form>
+</section>
+
+<!-- APP -->
+<div class="app" id="app" hidden>
+  <aside class="side">
+    <div class="side__brand">
+      <svg viewBox="0 0 610 395" aria-hidden="true"><g fill="url(#lg)"><rect x="215" y="0" width="180" height="58" rx="29"/><rect x="425" y="0" width="180" height="58" rx="29"/><rect x="215" y="111" width="180" height="58" rx="29"/><rect x="425" y="111" width="115" height="58" rx="29"/><rect x="70" y="222" width="115" height="58" rx="29"/><rect x="215" y="222" width="180" height="58" rx="29"/><rect x="5" y="333" width="180" height="58" rx="29"/><rect x="215" y="333" width="180" height="58" rx="29"/></g></svg>
+      <div><strong>Estúdio</strong><span>Blog Vencendo o Câncer</span></div>
+    </div>
+    <nav class="side__nav">
+      <button data-view="posts" class="is-active"><svg viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h10"/></svg>Artigos</button>
+      <button data-view="radar"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><path d="M12 12 19 5"/></svg>Radar de notícias</button>
+      <button data-view="feeds"><svg viewBox="0 0 24 24"><path d="M5 19a1 1 0 1 0 0-.01M4 11a9 9 0 0 1 9 9M4 4a16 16 0 0 1 16 16"/></svg>Fontes</button>
+      <button data-view="help"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6V14M12 17.5v.01"/></svg>Como usar</button>
+    </nav>
+    <div class="side__foot">
+      <a href="/" target="_blank" rel="noopener">Ver site ↗</a>
+      <button id="logout">Sair</button>
+      <span class="mode" id="modeBadge"></span>
+    </div>
+  </aside>
+
+  <main class="main">
+    <!-- ARTIGOS -->
+    <section class="view" data-view="posts">
+      <header class="view__head">
+        <div><h2>Artigos</h2><p>Tudo o que está publicado e os rascunhos em andamento.</p></div>
+        <button class="btn btn--primary" id="newPost">+ Novo artigo</button>
+      </header>
+      <div class="toolbar">
+        <input class="input" type="search" id="postSearch" placeholder="Buscar por título…">
+        <select class="input" id="postStatus"><option value="">Todos</option><option value="published">Publicados</option><option value="draft">Rascunhos</option></select>
+      </div>
+      <div class="list" id="postList"><div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div></div>
+    </section>
+
+    <!-- RADAR -->
+    <section class="view" data-view="radar" hidden>
+      <header class="view__head">
+        <div><h2>Radar de notícias</h2><p>As últimas notícias de oncologia das fontes que você escolheu. Transforme qualquer uma em artigo com um clique.</p></div>
+        <button class="btn btn--ghost" id="radarRefresh">Atualizar</button>
+      </header>
+      <div class="toolbar">
+        <input class="input" type="search" id="radarSearch" placeholder="Filtrar: imunoterapia, mama, pulmão…">
+        <select class="input" id="radarLang"><option value="">Todos os idiomas</option><option value="pt">Português</option><option value="en">Inglês</option></select>
+        <select class="input" id="radarFeed"><option value="">Todas as fontes</option></select>
+      </div>
+      <p class="hint" id="radarInfo"></p>
+      <div class="news" id="newsList"></div>
+    </section>
+
+    <!-- FONTES -->
+    <section class="view" data-view="feeds" hidden>
+      <header class="view__head">
+        <div><h2>Fontes do radar</h2><p>Feeds RSS consultados pelo radar. Use palavras-chave para filtrar fontes muito gerais.</p></div>
+        <button class="btn btn--primary" id="saveFeeds">Salvar fontes</button>
+      </header>
+      <div class="feeds" id="feedList"></div>
+      <form class="feed-add" id="feedAdd">
+        <input class="input" name="name" placeholder="Nome da fonte" required>
+        <input class="input" name="url" type="url" placeholder="https://… (endereço do feed RSS)" required>
+        <select class="input" name="lang"><option value="pt">PT</option><option value="en">EN</option></select>
+        <input class="input" name="keywords" placeholder="Palavras-chave (opcional, separadas por vírgula)">
+        <button class="btn btn--ghost" type="submit">Adicionar</button>
+      </form>
+      <p class="hint">Dica: no Google Notícias, qualquer busca vira feed: <code>https://news.google.com/rss/search?q=SEU+TEMA&amp;hl=pt-BR&amp;gl=BR&amp;ceid=BR:pt-419</code></p>
+    </section>
+
+    <!-- AJUDA -->
+    <section class="view" data-view="help" hidden>
+      <header class="view__head"><div><h2>Como usar o Estúdio</h2><p>Três caminhos para alimentar o blog.</p></div></header>
+      <div class="help">
+        <article><span>1</span><h3>Escrever do zero</h3><p>Em <b>Artigos → Novo artigo</b>, preencha título, resumo, categorias e o texto. Envie uma imagem de capa (ela é otimizada automaticamente). Salve como <b>rascunho</b> para revisar depois, ou <b>publique</b>.</p></article>
+        <article><span>2</span><h3>A partir de uma notícia</h3><p>No <b>Radar</b>, clique em <b>Usar como base</b>. O editor abre com título, resumo e a fonte já preenchidos para você escrever o comentário do Dr. Neto. A fonte aparece no fim do artigo.</p></article>
+        <article><span>3</span><h3>Rascunho com IA</h3><p>Com a IA ativada, <b>Gerar rascunho com IA</b> lê a notícia (inclusive em inglês) e escreve um rascunho em português, na voz do blog. <b>Sempre revise</b> as informações médicas antes de publicar — o texto volta como rascunho.</p></article>
+        <article><span>!</span><h3>Imagens e direitos</h3><p>Prefira fotos próprias do Dr. Neto ou de bancos com licença. Fotos de portais de notícias têm direitos autorais: use-as apenas como referência.</p></article>
+        <article><span>⏱</span><h3>Quando aparece no site?</h3><p>Após publicar, o site é reconstruído automaticamente e o artigo fica no ar em cerca de 1 minuto.</p></article>
+      </div>
+    </section>
+  </main>
+</div>
+
+<!-- EDITOR -->
+<div class="drawer" id="editor" hidden>
+  <div class="drawer__panel">
+    <header class="drawer__head">
+      <div><span class="eyebrow" id="edMode">Novo artigo</span><h2 id="edHeading">Sem título</h2></div>
+      <div class="drawer__actions">
+        <button class="btn btn--ghost" id="edPreview">Pré-visualizar</button>
+        <button class="btn btn--ghost" id="edDraft">Salvar rascunho</button>
+        <button class="btn btn--primary" id="edPublish">Publicar</button>
+        <button class="icon-btn" id="edClose" aria-label="Fechar">✕</button>
+      </div>
+    </header>
+    <div class="drawer__body">
+      <div class="ed-main">
+        <div class="ai-box" id="aiBox" hidden>
+          <div><strong>Rascunho gerado com IA.</strong> Revise dados, números e recomendações antes de publicar.</div>
+        </div>
+        <input class="ed-title" id="fTitle" placeholder="Título do artigo" maxlength="140">
+        <textarea class="ed-excerpt" id="fExcerpt" placeholder="Resumo curto que aparece nos cards e no Google (1–2 frases)" rows="2" maxlength="300"></textarea>
+        <div class="rte">
+          <div class="rte__bar" id="rteBar">
+            <button data-cmd="formatBlock" data-val="h2" title="Título de seção">H2</button>
+            <button data-cmd="formatBlock" data-val="h3" title="Subtítulo">H3</button>
+            <button data-cmd="formatBlock" data-val="p" title="Parágrafo">¶</button>
+            <i></i>
+            <button data-cmd="bold" title="Negrito"><b>B</b></button>
+            <button data-cmd="italic" title="Itálico"><em>I</em></button>
+            <i></i>
+            <button data-cmd="insertUnorderedList" title="Lista">• Lista</button>
+            <button data-cmd="insertOrderedList" title="Lista numerada">1. Lista</button>
+            <button data-cmd="formatBlock" data-val="blockquote" title="Citação">❝</button>
+            <button data-cmd="createLink" title="Link">Link</button>
+            <button data-cmd="insertImage" title="Imagem no texto">Imagem</button>
+            <i></i>
+            <button data-cmd="removeFormat" title="Limpar formatação">Limpar</button>
+            <span class="rte__count" id="wordCount">0 palavras</span>
+          </div>
+          <div class="rte__area prose" id="fBody" contenteditable="true" data-placeholder="Escreva o artigo aqui. Cole textos à vontade — a formatação é limpa automaticamente."></div>
+        </div>
+      </div>
+      <aside class="ed-side">
+        <div class="card">
+          <h4>Capa</h4>
+          <label class="cover" id="coverDrop">
+            <img id="coverImg" alt="" hidden>
+            <span id="coverHint">Clique ou arraste uma imagem<br><small>JPG, PNG ou WEBP</small></span>
+            <input type="file" id="coverFile" accept="image/*" hidden>
+          </label>
+          <input class="input" id="fCover" placeholder="…ou endereço da imagem">
+          <input class="input" id="fCoverAlt" placeholder="Descrição da imagem (acessibilidade)">
+        </div>
+        <div class="card">
+          <h4>Categorias</h4>
+          <div class="cats" id="fCats"></div>
+        </div>
+        <div class="card">
+          <h4>Publicação</h4>
+          <label class="field"><span>Data</span><input class="input" type="date" id="fDate"></label>
+          <label class="field"><span>Endereço (slug)</span><input class="input" id="fSlug" placeholder="gerado-a-partir-do-titulo"></label>
+          <label class="field"><span>Autor</span><input class="input" id="fAuthor" value="Dr. Neto Pereira"></label>
+        </div>
+        <div class="card">
+          <h4>Fonte da notícia</h4>
+          <input class="input" id="fSourceName" placeholder="Nome do veículo">
+          <input class="input" id="fSourceUrl" placeholder="https://…">
+          <button class="btn btn--ghost btn--full" id="edAI" hidden>✦ Gerar rascunho com IA a partir da fonte</button>
+          <textarea class="input" id="fNotes" rows="3" placeholder="Orientações para a IA (opcional): enfoque, público, o que destacar…" hidden></textarea>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<!-- PREVIEW -->
+<div class="modal" id="preview" hidden>
+  <div class="modal__panel">
+    <button class="icon-btn modal__close" id="pvClose" aria-label="Fechar">✕</button>
+    <div class="pv" id="pvBody"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status"></div>
+
+<script src="/admin/admin.js"></script>
+</body>
+</html>

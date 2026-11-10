@@ -1,0 +1,33 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "node scripts/build.mjs",
+  "outputDirectory": "public",
+  "cleanUrls": true,
+  "trailingSlash": true,
+  "functions": {
+    "api/ai-draft.js": { "maxDuration": 120 },
+    "api/news.js": { "maxDuration": 30 }
+  },
+  "headers": [
+    { "source": "/assets/(.*)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }] },
+    { "source": "/admin/(.*)", "headers": [{ "key": "X-Robots-Tag", "value": "noindex" }, { "key": "Cache-Control", "value": "no-store" }] }
+  ],
+  "redirects": [
+    { "source": "/vencendo-o-cancer", "destination": "/blog/", "permanent": true },
+    { "source": "/2030-o-cancer-sera-a-principal-causa-de-morte-e-agora-copy", "destination": "/blog/2030-o-cancer-sera-a-principal-causa-de-morte-e-agora/", "permanent": true },
+    { "source": "/as-mentiras-que-te-contaram-sobre-o-cancer-desvendando-mitos-comuns", "destination": "/blog/as-mentiras-que-te-contaram-sobre-o-cancer-desvendando-mitos-comuns/", "permanent": true },
+    { "source": "/avancos-promissores-como-as-ultimas-descobertas-em-oncologia-estao-redefinindo-o-combate-ao-cancer", "destination": "/blog/avancos-promissores-como-as-ultimas-descobertas-em-oncologia-estao-redefinindo-o-combate-ao-cancer/", "permanent": true },
+    { "source": "/ele-fez-um-teste-de-gravidez-por-brincadeira-e-descobriu-um-cancer-copy", "destination": "/blog/ele-fez-um-teste-de-gravidez-por-brincadeira-e-descobriu-um-cancer/", "permanent": true },
+    { "source": "/entendendo-a-sindrome-de-lynch-historia-diagnostico-e-a-importancia-da-colonoscopia", "destination": "/blog/entendendo-a-sindrome-de-lynch-historia-diagnostico-e-a-importancia-da-colonoscopia/", "permanent": true },
+    { "source": "/esperanca-em-uma-gota-de-sangue-o-futuro-da-deteccao-precoce-do-cancer-copy", "destination": "/blog/esperanca-em-uma-gota-de-sangue-o-futuro-da-deteccao-precoce-do-cancer/", "permanent": true },
+    { "source": "/estadiamento-do-cancer-como-funciona-a-avaliacao-do-tamanho-da-doenca-copy", "destination": "/blog/estadiamento-do-cancer-como-funciona-a-avaliacao-do-tamanho-da-doenca/", "permanent": true },
+    { "source": "/microbioma-e-cancer-como-as-bacterias-do-seu-corpo-podem-ser-aliadas-ou-vilas-na-prevencao-da-doenca-copy", "destination": "/blog/microbioma-e-cancer-como-as-bacterias-do-seu-corpo-podem-ser-aliadas-ou-vilas-na-prevencao-da-doenca/", "permanent": true },
+    { "source": "/movimento-e-vida-o-papel-da-atividade-fisica-na-prevencao-e-no-enfrentamento-do-cancer", "destination": "/blog/movimento-e-vida-o-papel-da-atividade-fisica-na-prevencao-e-no-enfrentamento-do-cancer/", "permanent": true },
+    { "source": "/nem-todo-cancer-em-jovem-e-hereditario-mas-todo-cancer-em-jovem-merece-uma-investigacao-mais-cuidadosa", "destination": "/blog/nem-todo-cancer-em-jovem-e-hereditario-mas-todo-cancer-em-jovem-merece-uma-investigacao-mais-cuidadosa/", "permanent": true },
+    { "source": "/odontologia-e-cancer-um-cuidado-que-vai-muito-alem-do-sorriso-copy", "destination": "/blog/odontologia-e-cancer-um-cuidado-que-vai-muito-alem-do-sorriso/", "permanent": true },
+    { "source": "/quimioterapia-paliativa-nao-e-desistencia-como-esse-tratamento-pode-transformar-a-luta-contra-o-cancer", "destination": "/blog/quimioterapia-paliativa-nao-e-desistencia-como-esse-tratamento-pode-transformar-a-luta-contra-o-cancer/", "permanent": true },
+    { "source": "/tomografias-em-excesso-quando-o-cuidado-vira-risco-copy", "destination": "/blog/tomografias-em-excesso-quando-o-cuidado-vira-risco/", "permanent": true },
+    { "source": "/tumores-raros-porque-tem-menos-tratamentos", "destination": "/blog/tumores-raros-porque-tem-menos-tratamentos/", "permanent": true },
+    { "source": "/vacinas-personalizadas-contra-o-cancer-a-nova-fronteira-da-oncologia-copy", "destination": "/blog/vacinas-personalizadas-contra-o-cancer-a-nova-fronteira-da-oncologia/", "permanent": true }
+  ]
+}
