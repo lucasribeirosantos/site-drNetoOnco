@@ -676,3 +676,9 @@ html { scrollbar-color: #2f8fd0 var(--ink); scrollbar-width: thin; }
 /* enquadramento: prioriza rostos em fotos verticais recortadas */
 .pcard__img img, .featured .pcard__img img { object-position: 50% 22%; }
 .article-cover img { object-position: 50% 25%; }
+
+/* crédito do desenvolvedor */
+.footer__credit { margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--line-dark); display: flex; justify-content: center; }
+.footer__credit a { display: inline-flex; align-items: center; gap: 14px; font-size: 11px; letter-spacing: .24em; text-transform: uppercase; color: var(--muted-light); opacity: .75; transition: opacity .4s; }
+.footer__credit a:hover { opacity: 1; }
+.footer__credit img { width: 130px; height: auto; }

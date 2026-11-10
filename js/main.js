@@ -127,14 +127,15 @@
     const tl = gsap.timeline();
     gsap.set(pills, { scaleX: 0, transformOrigin: (i) => (i % 2 ? '0% 50%' : '100% 50%'), transformBox: 'fill-box' });
     gsap.set('.loader__name, .loader__sub', { yPercent: 120, opacity: 0 });
-    tl.to(pills, { scaleX: 1, duration: 1.1, stagger: { each: 0.07, from: 'random' }, ease: 'expo.out' })
-      .to('.loader__name', { yPercent: 0, opacity: 1, duration: 1 }, 0.35)
-      .to('.loader__sub', { yPercent: 0, opacity: 1, duration: 1 }, 0.5)
-      .to('.loader__bar i', { scaleX: 1, duration: 1.3, ease: 'power2.inOut' }, 0.2)
-      .to('.loader__mark', { scale: 0.86, duration: 1.2, ease: 'expo.inOut' }, 1.5)
-      .to('.loader__inner', { opacity: 0, y: -30, duration: 0.7, ease: 'power2.in' }, 1.7)
-      .to(loader, { clipPath: 'inset(0 0 100% 0)', duration: 1.2, ease: 'expo.inOut' }, 1.95)
-      .add(pageIntro(), 2.35)
+    tl.to(pills, { scaleX: 1, duration: 0.9, stagger: { each: 0.05, from: 'random' }, ease: 'expo.out' })
+      .to('.loader__name', { yPercent: 0, opacity: 1, duration: 0.8 }, 0.25)
+      .to('.loader__sub', { yPercent: 0, opacity: 1, duration: 0.8 }, 0.35)
+      .to('.loader__bar i', { scaleX: 1, duration: 1, ease: 'power2.inOut' }, 0.15)
+      .to('.loader__mark', { scale: 0.86, duration: 0.9, ease: 'expo.inOut' }, 1.05)
+      .to('.loader__inner', { opacity: 0, y: -30, duration: 0.5, ease: 'power2.in' }, 1.2)
+      .to(loader, { clipPath: 'inset(0 0 100% 0)', duration: 1, ease: 'expo.inOut' }, 1.4)
+      .add(pageIntro(), 1.7)
+      .add(unlockScroll, 1.85) // rolagem liberada assim que o loader sai da tela
       .add(() => loader.classList.add('is-skipped'));
     return tl;
   }
@@ -324,10 +325,15 @@
   $$('.posts--blog .pcard, .featured').forEach(c => gsap.from(c, { y: 50, opacity: 0, duration: 1.2, scrollTrigger: { trigger: c, start: 'top 92%' } }));
 
   /* ---------------- Start ---------------- */
-  const start = () => playEntrance();
-  if (document.readyState === 'complete') start(); else window.addEventListener('load', start, { once: true });
+  // Não espera todas as imagens: só as fontes e a foto do hero (máx. 1,2 s)
+  let started = false;
+  const start = () => { if (started) return; started = true; playEntrance(); };
+  const waits = [document.fonts ? document.fonts.ready : Promise.resolve()];
+  const heroImg = $('[data-hero-media] img');
+  if (heroImg && !heroImg.complete) waits.push(new Promise(r => { heroImg.addEventListener('load', r, { once: true }); heroImg.addEventListener('error', r, { once: true }); }));
+  Promise.race([Promise.all(waits), new Promise(r => setTimeout(r, 1200))]).then(start);
   // fallback de segurança caso alguma imagem demore
-  setTimeout(unlockScroll, 6000);
+  setTimeout(unlockScroll, 4000);
   window.addEventListener('load', () => ScrollTrigger.refresh());
 
   /* =========================================================
