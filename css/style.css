@@ -759,7 +759,7 @@ body {
 .hero .display { font-size: clamp(44px, 6vw, 100px); }
 .hero__row { flex-direction: column; align-items: flex-start; gap: 28px; }
 .chip { color: rgba(10, 15, 22, .78); background: rgba(255, 255, 255, .72); border-color: rgba(10, 15, 22, .08); }
-.pcard__cat { color: #fff; background: rgba(10, 15, 22, .4); border-color: rgba(255, 255, 255, .18); }
+.pcard .pcard__cat, .on-light .pcard .pcard__cat { color: #fff; background: rgba(10, 15, 22, .42); border-color: rgba(255, 255, 255, .2); }
 @media (max-aspect-ratio: 4/5) {
   .hero__media {
     left: var(--gutter); right: var(--gutter); width: auto; top: calc(var(--nav-h) + 4px); bottom: auto; height: 36svh;
@@ -806,3 +806,8 @@ html { scrollbar-color: #2f8fd0 var(--ivory); }
   .hero__actions .btn--ghost { display: none; }
   .hero__content .display { margin-top: 18px !important; }
 }
+
+/* mídia: imagem sempre inteira, sem zoom (G37 é mais larga que 16:9 → faixas brancas discretas) */
+.mcard__media { background: #fff; }
+.mcard img { object-fit: contain; }
+.mcard:hover img { transform: none; }

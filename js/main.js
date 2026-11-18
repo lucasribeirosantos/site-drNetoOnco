@@ -245,7 +245,6 @@
 
     // MÍDIA: cartões com leve parallax interno
     mm.add('(min-width: 721px)', () => {
-      $$('.mcard img').forEach(img => gsap.fromTo(img, { yPercent: -4, scale: 1.1 }, { yPercent: 4, scale: 1.1, ease: 'none', scrollTrigger: { trigger: img.parentElement, scrub: true } }));
     });
 
     // posts
