@@ -183,7 +183,7 @@
 
     // HERO: foto encolhe para um quadro, título sobe
     gsap.timeline({ scrollTrigger: { trigger: '[data-hero]', start: 'top top', end: '+=100%', scrub: 0.6, pin: true, anticipatePin: 1 } })
-      .to('[data-hero-media]', { clipPath: 'inset(9% 7% 9% 7% round 44px)', ease: 'none' }, 0)
+      .to('[data-hero-media]', { scale: 0.93, ease: 'none' }, 0)
       .to('[data-hero-media] img', { scale: 0.94, ease: 'none' }, 0)
       .to('[data-hero-content]', { yPercent: -18, opacity: 0, ease: 'none' }, 0)
       .to('.scroll-cue', { opacity: 0, duration: 0.2 }, 0);
@@ -292,7 +292,7 @@
     const prev = panel.previousElementSibling;
     if (!prev || prev.matches('.quote, [data-hero], [data-intro]') || prev.querySelector('.services__pin, .intro__pin')) return;
     gsap.fromTo(prev, { scale: 1, filter: 'brightness(1)' }, {
-      scale: 0.94, filter: 'brightness(0.55)', ease: 'none', transformOrigin: '50% 100%',
+      scale: 0.95, filter: 'brightness(0.93)', ease: 'none', transformOrigin: '50% 100%',
       scrollTrigger: { trigger: panel, start: 'top bottom', end: 'top 20%', scrub: true },
     });
   });

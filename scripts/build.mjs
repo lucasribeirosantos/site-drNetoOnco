@@ -87,7 +87,7 @@ ${head}
 <body data-page="blog">
 ${header}
 <main>
-  <section class="page-hero on-dark">
+  <section class="page-hero on-light">
     <div class="orb orb--a" aria-hidden="true"></div>
     <div class="container page-hero__row" style="position:relative">
       <div>
@@ -98,7 +98,7 @@ ${header}
       <img class="page-hero__logo" src="/assets/img/logo1.webp" alt="Vencendo o Câncer" data-page-fade>
     </div>
   </section>
-  <section class="section on-light panel" style="padding-top:90px">
+  <section class="section on-white panel" style="padding-top:90px">
     <div class="container">
       ${featured ? `
       <a class="featured pcard" href="/blog/${featured.slug}/">
@@ -170,7 +170,7 @@ ${p.cover ? `<meta property="og:image" content="${site.siteUrl}${esc(p.cover)}">
 <div class="progress" aria-hidden="true"></div>
 ${header}
 <main>
-  <section class="article-hero on-dark">
+  <section class="article-hero on-light">
     <div class="container">
       <div class="article-hero__inner">
         <a href="/blog/" class="eyebrow" data-page-fade>← Vencendo o Câncer${p.categories[0] ? ' · ' + esc(p.categories[0]) : ''}</a>
@@ -207,7 +207,7 @@ ${header}
       </div>
     </div>
   </article>
-  <section class="related on-dark">
+  <section class="related on-paper">
     <div class="container">
       <div class="blogt__head"><h2 class="h2" data-split>Continue <em class="serif grad-text">lendo.</em></h2><a class="btn btn--ghost" href="/blog/">Todos os artigos</a></div>
       <div class="posts">${related.map(card).join('')}</div>
